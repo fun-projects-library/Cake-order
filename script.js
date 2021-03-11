@@ -69,8 +69,6 @@ const payment = (resolvedValue) => {
           reject(`Your payment is cancelled!`)
 
         }
-        
-  
       }, 2000)
     })
 
@@ -108,6 +106,7 @@ orderBtn.onclick = ()=>{
   checkOrder(order)
   .then( (res) => {return payment(res)})
   .then( (value)=> {return checkStock(value)})
+  .then( (result) => console.log(result))
   .catch( (err) => console.log(err))
   
 
