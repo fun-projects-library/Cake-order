@@ -95,6 +95,8 @@ const checkStock = (resolvedValue) => {
 
   }
 
+const add = "this is an example of GitHub upload:)";
+const another = "example";
 
 
 orderBtn.onclick = ()=>{
