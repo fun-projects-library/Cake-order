@@ -38,6 +38,7 @@ const checkOrder = (order) => {
   
   let truthy = order.every( item => patisserie[item[0]].stock >= item[1]);
   let total = patisserie[order[0][0]].price * order[0][1];
+
   return new Promise ( (resolve, reject) => {
     setTimeout( ()=> {
        if(truthy){
@@ -50,9 +51,6 @@ const checkOrder = (order) => {
     },1000)
   })
 
-  // dont forget setTimeout
-
-
 };
 
 
@@ -61,7 +59,7 @@ const payment = (resolvedValue) => {
   return new Promise ( (resolve, reject) => {
     document.addEventListener("keyup", function(event){
       setTimeout( ()=> {
-        if(event.key === "i"){
+        if(event.key.toUpperCase() === "I"){
           console.log(`Payment process completed! You paid ${resolvedValue[1]}`);
           console.log(`to Cashier: Wait for checking stock...`)
           resolve(resolvedValue[0])
@@ -73,8 +71,6 @@ const payment = (resolvedValue) => {
     })
 
   })
-  
-  // dont forget setTimeout
   
 }
 
@@ -91,18 +87,15 @@ const checkStock = (resolvedValue) => {
     }, 3000)
 
   })
-  // dont forget setTimeout
 
   }
 
 
 
 orderBtn.onclick = ()=>{
-  // let order = ['contessa', 2];   // sample order template, you should take values from DOM
 
   const order = [[cake.value, amount.value]];
 
-  // create promise chain
   checkOrder(order)
   .then( (res) => {return payment(res)})
   .then( (value)=> {return checkStock(value)})
