@@ -87,8 +87,7 @@ const checkStock = (resolvedValue) => {
     }, 3000)
 
   })
-
-  }
+}
 
 
 
